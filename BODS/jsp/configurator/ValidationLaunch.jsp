@@ -7,6 +7,10 @@
 		document.configuratorForm.action='/bods/ValidationSaveMapping.etl';
 		document.configuratorForm.submit();
 	}
+	function doNextProcess() {
+		document.configuratorForm.action='/bods/TargetColumnMappingLaunch.etl';
+		document.configuratorForm.submit();
+	}
 </script>
 <html:html>
 <head>
@@ -126,7 +130,8 @@
 							</div>
 						</div>
 						<center>
-							<button class="btn waves-effect waves-light" type="submit" name="action">Save</button>
+							<button class="btn waves-effect waves-light" type="submit" name="action">Save</button> &nbsp; &nbsp;
+							<button class="btn waves-effect waves-light" type="button" onClick="doNextProcess()" name="action">Next</button>
 						</center> &nbsp;
 					</div>
 				</nested:nest>

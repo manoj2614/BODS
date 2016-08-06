@@ -74,6 +74,8 @@ public class ConfiguratorVO implements Serializable {
 	/** The interface table name. */
 	private String interfaceTableName;
 
+	private ConfiguratorInterfaceColumnVO configuratorInterfaceColumnVO;
+	
 	/** The configurator interface column vo list. */
 	private List<ConfiguratorInterfaceColumnVO> configuratorInterfaceColumnVOList;
 
@@ -100,6 +102,7 @@ public class ConfiguratorVO implements Serializable {
 	
 	public ConfiguratorVO() {
 	    configuratorValidationVO = new ConfiguratorValidationVO();
+	    configuratorInterfaceColumnVO = new ConfiguratorInterfaceColumnVO();
 	}
 	
 
@@ -514,5 +517,15 @@ public class ConfiguratorVO implements Serializable {
 
     public void setConfiguratorValidationVO(ConfiguratorValidationVO configuratorValidationVO) {
         this.configuratorValidationVO = configuratorValidationVO;
+    }
+
+
+    public ConfiguratorInterfaceColumnVO getConfiguratorInterfaceColumnVO() {
+        return configuratorInterfaceColumnVO;
+    }
+
+
+    public void setConfiguratorInterfaceColumnVO(ConfiguratorInterfaceColumnVO configuratorInterfaceColumnVO) {
+        this.configuratorInterfaceColumnVO = configuratorInterfaceColumnVO;
     }
 }

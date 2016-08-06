@@ -245,4 +245,27 @@
 	
 	<definition name="validationLaunch.footer" extends="bodsbase.main.footer"/>
 	
+	
+	<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+	 <definition name="targetColumnMapping.main" extends="bodsbase.main">
+    	<put name="page.head"         value="targetColumnMapping.html.head"/>
+        <put name="page.menu"    	  value="targetColumnMapping.menu"/>
+        <put name="page.body"         value="targetColumnMapping.body"/>
+        <put name="page.footer"       value="targetColumnMapping.footer"/>
+    </definition>
+    
+    <definition name="targetColumnMapping.html.head" extends="bodsbase.main.html.head">
+    </definition>
+    
+    <definition name="targetColumnMapping.menu" extends="bodsbase.main.menu">
+	</definition>
+
+	<definition name="targetColumnMapping.body" extends="bodsbase.main.body">
+		<put name="content" value="/jsp/configurator/TargetColumnMappingLaunch.jsp"/>
+	</definition>
+	
+	<definition name="targetColumnMapping.footer" extends="bodsbase.main.footer"/>
+	
+	
 </tiles-definitions>
