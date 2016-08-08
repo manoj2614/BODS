@@ -126,6 +126,11 @@
 		<forward name="forward.success" path="validationLaunch.main"/>
 	</action>
 	
+	<action path="/QueryValidationMapping" name="configuratorForm" attribute="configuratorForm" validate="true" type="com.dataprocess.bods.web.action.ConfiguratorAction">
+	</action>
+	
+	
+	
 	<!-- Interface Column Mapping -->
 	<action path="/TargetColumnMappingLaunch" name="configuratorForm" attribute="configuratorForm" validate="true" type="com.dataprocess.bods.web.action.ConfiguratorAction">
 		<forward name="forward.success" path="targetColumnMapping.main"/>

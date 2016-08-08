@@ -26,9 +26,9 @@ public final class JDBCConnectionManager {
 
 	public void getJDBCConnection() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:XE", "system", "oracle");
+		    Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@192.168.0.254:1521:ORCL", "snipers", "snipers");
 
 		} catch (Exception exception) {
 			exception.printStackTrace();

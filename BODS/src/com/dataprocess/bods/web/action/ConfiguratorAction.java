@@ -15,6 +15,7 @@ import com.dataprocess.bods.handler.ConfiguratorHandler;
 import com.dataprocess.bods.vo.ConfiguratorVO;
 import com.dataprocess.bods.web.form.ConfiguratorForm;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ConfiguratorAction.
  */
@@ -38,18 +39,19 @@ public final class ConfiguratorAction extends Action {
         PrintWriter printWriter = null;
 
         if (mapping.getPath().equals("/ConfiguratorLaunch")) {
-        	configuratorHandler = new ConfiguratorHandler();
-        	configuratorForm.setConfiguratorVO(new ConfiguratorVO());
-        		configuratorForm.getConfiguratorVO().setConfigConnectionList(configuratorHandler.getConfigConnectionList());
+            configuratorHandler = new ConfiguratorHandler();
+            configuratorForm.setConfiguratorVO(new ConfiguratorVO());
+            configuratorForm.getConfiguratorVO().setConfigConnectionList(configuratorHandler.getConfigConnectionList());
 
         } else if (mapping.getPath().equals("/ConfiguratorColumnDefinition")) {
             configuratorHandler = new ConfiguratorHandler();
             configuratorVO = configuratorForm.getConfiguratorVO();
-            configuratorForm.getConfiguratorVO().setSourceConfigConnectionList(configuratorHandler.getSourceConfigConnectionList());
-        	configuratorForm.getConfiguratorVO().setSourceConfigurationNameList(configuratorHandler.getSourceConfigurationNameList());
+            configuratorForm.getConfiguratorVO().setSourceConfigConnectionList(
+                configuratorHandler.getSourceConfigConnectionList());
+            configuratorForm.getConfiguratorVO().setSourceConfigurationNameList(
+                configuratorHandler.getSourceConfigurationNameList());
             if (configuratorVO.getSourceConfigurationId() > 0) {
                 configuratorHandler.getSourceConfiguratorColumn(configuratorVO);
-                System.out.println("configuratorVO.getDisplayName()" + configuratorVO.getDisplayName());
                 configuratorForm.setConfiguratorVO(configuratorVO);
             }
         } else if (mapping.getPath().equals("")) {
@@ -57,29 +59,29 @@ public final class ConfiguratorAction extends Action {
         } else if (mapping.getPath().equals("/InterfaceColumnMapping")) {
 
         } else if (mapping.getPath().equals("/ConfiguratorSaveMapping")) {
-        	configuratorHandler = new ConfiguratorHandler();
-        	configuratorVO = configuratorForm.getConfiguratorVO();
-        	configuratorHandler.saveConfiguratorDetails(configuratorVO);
+            configuratorHandler = new ConfiguratorHandler();
+            configuratorVO = configuratorForm.getConfiguratorVO();
+            configuratorHandler.saveConfiguratorDetails(configuratorVO);
 
         } else if (mapping.getPath().equals("/ValidationLaunch")) {
-            
+
         } else if (mapping.getPath().equals("/QueryValidationMapping")) {
             configuratorHandler = new ConfiguratorHandler();
             configuratorVO = configuratorForm.getConfiguratorVO();
             convertedJson = configuratorHandler.parseQuery(configuratorVO);
-            valueObject.put("valueObject", convertedJson);
+            valueObject.put("convertedJson", convertedJson);
             printWriter = response.getWriter();
-            printWriter.println(valueObject.getString("valueObject"));
+            printWriter.print(valueObject.get("convertedJson").toString());
             printWriter.flush();
             printWriter.close();
             forwardName = null;
         } else if (mapping.getPath().equals("/ValidationSaveMapping")) {
 
-        } else if(mapping.getPath().equals("/ConfiguratorExecuteMapping")) {
-        	int configuratorConnId = Integer.parseInt(request.getParameter("configuratorConnId"));
-        	int configuratorId = Integer.parseInt(request.getParameter("configuratorId"));
-        	configuratorHandler = new ConfiguratorHandler();
-        	configuratorHandler.execute(configuratorId,configuratorConnId);
+        } else if (mapping.getPath().equals("/ConfiguratorExecuteMapping")) {
+            int configuratorConnId = Integer.parseInt(request.getParameter("configuratorConnId"));
+            int configuratorId = Integer.parseInt(request.getParameter("configuratorId"));
+            configuratorHandler = new ConfiguratorHandler();
+            configuratorHandler.execute(configuratorId, configuratorConnId);
         }
         return mapping.findForward(forwardName);
     }

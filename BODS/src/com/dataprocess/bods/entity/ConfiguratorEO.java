@@ -1,7 +1,5 @@
 package com.dataprocess.bods.entity;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +16,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Formula;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ConfiguratorEO.
  */
@@ -25,53 +24,55 @@ import org.hibernate.annotations.Formula;
 @Table(name = "BODS_CONFIGURATOR_CFG")
 public class ConfiguratorEO {
 
-	@SequenceGenerator(name = "generator", sequenceName = "CONFIGURATOR_CFG_ID_SEQ")
-	@Id
-	@Column(name = "CONFIGURATOR_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
+    /** The configurator id. */
+    @SequenceGenerator(name = "generator", sequenceName = "CONFIGURATOR_CFG_ID_SEQ")
+    @Id
+    @Column(name = "CONFIGURATOR_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
     private int configuratorId;
 
-	@Column(name = "CONFIGURATOR_CONN_ID")
-	private int configuratorConnectionId;
+    /** The configurator connection id. */
+    @Column(name = "CONFIGURATOR_CONN_ID")
+    private int configuratorConnectionId;
 
-	@Column(name = "CONFIGURATOR_NAME")
-	private String configuratorName;
+    /** The configurator name. */
+    @Column(name = "CONFIGURATOR_NAME")
+    private String configuratorName;
 
-	@Formula("(SELECT CONN.CONNECTION_NAME FROM BODS_CONNECTION_CFG CONN WHERE CONN.CONNECTION_ID = CONFIGURATOR_CONN_ID)")
-	private String configuratorConnectionName;
+    /** The configurator connection name. */
+    @Formula("(SELECT CONN.CONNECTION_NAME FROM BODS_CONNECTION_CFG CONN WHERE CONN.CONNECTION_ID = CONFIGURATOR_CONN_ID)")
+    private String configuratorConnectionName;
 
-	@Column(name = "DISPLAY_NAME")
-	private String displayName;
+    /** The display name. */
+    @Column(name = "DISPLAY_NAME")
+    private String displayName;
 
-	@Column(name = "DESCRIPTION")
-	private String description;
+    /** The description. */
+    @Column(name = "DESCRIPTION")
+    private String description;
 
-	@Column(name = "REDUNDANTREDUCER")
+    /** The redundant reducer. */
+    @Column(name = "REDUNDANTREDUCER")
     private String redundantReducer;
 
-	@Column(name = "CONVERSION")
+    /** The conversion. */
+    @Column(name = "CONVERSION")
     private String conversion;
 
+    /** The source configuration connection id. */
     @Column(name = "SOURCE_CONFIGURATOR_CONN_ID")
     private int sourceConfigurationConnectionId;
 
+    /** The source configuration id. */
     @Column(name = "SOURCE_CONFIGURATOR_ID")
     private int sourceConfigurationId;
 
-   /* @Formula("(SELECT SOUR_CONN.CONNECTION_NAME FROM BODS_CONNECTION_CFG SOUR_CONN WHERE SOUR_CONN.CONNECTION_ID = SOURCE_CONFIGURATOR_CONN_ID)")
-    private String sourceConfigurationConnectionName;
+    /** The configurator binaries eo. */
+    @JoinColumn(name = "CONFIGURATOR_ID")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private ConfiguratorBinariesEO configuratorBinariesEO;
 
-    @Formula("(SELECT SOURCE_CFG.SOURCE_CFG_NAME FROM BODS_SOURCE_CFG SOUR_CFG WHERE SOURCE_CFG.SOURCE_CFG_ID = SOURCE_CONFIGURATOR_ID)")
-    private String sourceConfigurationName;
-    */
-    @Column(name = "PROCEDUREVALUE")
-	private String procedureValue;
-    
-	@JoinColumn(name = "CONFIGURATOR_ID")
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@Fetch(FetchMode.JOIN)
-	private Set<ConfiguratorColumnDefinitionEO> configuratorColumnDefinitionEOSet;
-	
     /**
      * Gets the configurator id.
      * 
@@ -216,52 +217,58 @@ public class ConfiguratorEO {
         this.conversion = conversion;
     }
 
-	public int getSourceConfigurationConnectionId() {
-		return sourceConfigurationConnectionId;
-	}
+    /**
+     * Gets the source configuration connection id.
+     *
+     * @return the source configuration connection id
+     */
+    public int getSourceConfigurationConnectionId() {
+        return sourceConfigurationConnectionId;
+    }
 
-	public void setSourceConfigurationConnectionId(int sourceConfigurationConnectionId) {
-		this.sourceConfigurationConnectionId = sourceConfigurationConnectionId;
-	}
+    /**
+     * Sets the source configuration connection id.
+     *
+     * @param sourceConfigurationConnectionId the new source configuration connection id
+     */
+    public void setSourceConfigurationConnectionId(int sourceConfigurationConnectionId) {
+        this.sourceConfigurationConnectionId = sourceConfigurationConnectionId;
+    }
 
-	public int getSourceConfigurationId() {
-		return sourceConfigurationId;
-	}
+    /**
+     * Gets the source configuration id.
+     *
+     * @return the source configuration id
+     */
+    public int getSourceConfigurationId() {
+        return sourceConfigurationId;
+    }
 
-	public void setSourceConfigurationId(int sourceConfigurationId) {
-		this.sourceConfigurationId = sourceConfigurationId;
-	}
+    /**
+     * Sets the source configuration id.
+     *
+     * @param sourceConfigurationId the new source configuration id
+     */
+    public void setSourceConfigurationId(int sourceConfigurationId) {
+        this.sourceConfigurationId = sourceConfigurationId;
+    }
 
-	/*public String getSourceConfigurationConnectionName() {
-		return sourceConfigurationConnectionName;
-	}
+    /**
+     * Gets the configurator binaries eo.
+     *
+     * @return the configurator binaries eo
+     */
+    public ConfiguratorBinariesEO getConfiguratorBinariesEO() {
+        return configuratorBinariesEO;
+    }
 
-	public void setSourceConfigurationConnectionName(String sourceConfigurationConnectionName) {
-		this.sourceConfigurationConnectionName = sourceConfigurationConnectionName;
-	}
+    /**
+     * Sets the configurator binaries eo.
+     *
+     * @param configuratorBinariesEO the new configurator binaries eo
+     */
+    public void setConfiguratorBinariesEO(ConfiguratorBinariesEO configuratorBinariesEO) {
+        this.configuratorBinariesEO = configuratorBinariesEO;
+    }
 
-	public String getSourceConfigurationName() {
-		return sourceConfigurationName;
-	}
-
-	public void setSourceConfigurationName(String sourceConfigurationName) {
-		this.sourceConfigurationName = sourceConfigurationName;
-	}*/
-
-	public Set<ConfiguratorColumnDefinitionEO> getConfiguratorColumnDefinitionEOSet() {
-		return configuratorColumnDefinitionEOSet;
-	}
-
-	public void setConfiguratorColumnDefinitionEOSet(
-			Set<ConfiguratorColumnDefinitionEO> configuratorColumnDefinitionEOSet) {
-		this.configuratorColumnDefinitionEOSet = configuratorColumnDefinitionEOSet;
-	}
-
-	public String getProcedureValue() {
-		return procedureValue;
-	}
-
-	public void setProcedureValue(String procedureValue) {
-		this.procedureValue = procedureValue;
-	}
 }

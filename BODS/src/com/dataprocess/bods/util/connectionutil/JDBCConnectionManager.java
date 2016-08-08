@@ -29,7 +29,7 @@ public final class JDBCConnectionManager {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			connection = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:XE", "system", "welcome");
+					"jdbc:oracle:thin:@192.168.0.254:1521:ORCL", "snipers", "snipers");
 			
 			if (connection != null) {
 				connectionFlag = true;
