@@ -2,7 +2,10 @@ package com.dataprocess.bods.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -13,7 +16,13 @@ import javax.persistence.Table;
 public final class ConfiguratorBinariesEO {
 
     /** The configurator id. */
+    @SequenceGenerator(name = "generator", sequenceName = "BODS_CFG_BINARIES_ID_SEQ")
     @Id
+    @Column(name = "CFG_BINARIES_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "generator")
+    private int configuratorBinaryId;
+
+    /** The configurator id. */
     @Column(name = "CONFIGURATOR_ID")
     private int configuratorId;
 
@@ -28,6 +37,24 @@ public final class ConfiguratorBinariesEO {
      */
     public int getConfiguratorId() {
         return configuratorId;
+    }
+
+    /**
+     * Gets the configurator binary id.
+     *
+     * @return the configurator binary id
+     */
+    public int getConfiguratorBinaryId() {
+        return configuratorBinaryId;
+    }
+
+    /**
+     * Sets the configurator binary id.
+     *
+     * @param configuratorBinaryId the new configurator binary id
+     */
+    public void setConfiguratorBinaryId(int configuratorBinaryId) {
+        this.configuratorBinaryId = configuratorBinaryId;
     }
 
     /**

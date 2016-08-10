@@ -22,7 +22,6 @@ import com.dataprocess.bods.vo.ConcurrentParameterVO;
 import com.dataprocess.bods.vo.ConfiguratorInterfaceColumnVO;
 import com.dataprocess.bods.vo.ConfiguratorVO;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ConfiguratorDAO.
  */
@@ -66,7 +65,6 @@ public final class ConfiguratorDAO {
      */
     public List<ConfiguratorInterfaceColumnVO> getInterfaceTableColumnList(int configuratorConnectionId,
         String interfaceTableName) throws BODSException {
-        int dataLength = 0;
         String query = "";
         String dataType = "";
         String columnName = "";
@@ -84,7 +82,7 @@ public final class ConfiguratorDAO {
             configuratorConnection = targetSchemaConnection.getTargetSchemaConnection(configuratorConnectionId);
             preparedStatement = configuratorConnection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.wasNull()) {
+            /*if (resultSet.next()) {*/
                 resultSetMetaData = resultSet.getMetaData();
                 for (int i = 1; i <= resultSetMetaData.getColumnCount(); i++) {
                     columnName = resultSetMetaData.getColumnName(i);
@@ -94,17 +92,12 @@ public final class ConfiguratorDAO {
                             .equalsIgnoreCase("CHAR"))) {
                         dataType = "STRING";
                     }
-                    dataLength = resultSetMetaData.getColumnDisplaySize(i);
                     configuratorInterfaceColumnVO = new ConfiguratorInterfaceColumnVO();
                     configuratorInterfaceColumnVO.setTableName(interfaceTableName);
                     configuratorInterfaceColumnVO.setColumnName(columnName);
-                    configuratorInterfaceColumnVO.setDisplayName(columnName);
-                    configuratorInterfaceColumnVO.setAttributeName(columnName);
-                    configuratorInterfaceColumnVO.setDataType(dataType);
-                    configuratorInterfaceColumnVO.setDataLength(dataLength);
                     configuratorInterfaceColumnVOList.add(configuratorInterfaceColumnVO);
                 }
-            }
+            //}
 
         } catch (Exception exception) {
             throw new BODSException("ConfiguratorDAO", "getSourceConfigurator", exception.getMessage());
@@ -428,7 +421,7 @@ public final class ConfiguratorDAO {
      * @param sourceConfiguratorId the source configurator id
      * @return the extract query from db
      */
-    public String getExtractQueryFromDB(int sourceConfiguratorId) throws BODSException{
+    public String getExtractQueryFromDB(int sourceConfiguratorId) throws BODSException {
         String sourceQuery = "";
         Connection connection = null;
         PreparedStatement preparedStatement = null;

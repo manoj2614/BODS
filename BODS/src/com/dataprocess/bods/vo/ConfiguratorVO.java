@@ -90,9 +90,6 @@ public class ConfiguratorVO implements Serializable {
 
     /* Interface Column Definition */
 
-    /** The interface table name. */
-    private String interfaceTableName;
-
     /** The configurator interface column vo. */
     private ConfiguratorInterfaceColumnVO configuratorInterfaceColumnVO;
 
@@ -379,24 +376,6 @@ public class ConfiguratorVO implements Serializable {
     public void setConfiguratorColumnDefinitionVOSet(
         Set<ConfiguratorColumnDefinitionVO> configuratorColumnDefinitionVOSet) {
         this.configuratorColumnDefinitionVOSet = configuratorColumnDefinitionVOSet;
-    }
-
-    /**
-     * Gets the interface table name.
-     * 
-     * @return the interface table name
-     */
-    public String getInterfaceTableName() {
-        return interfaceTableName;
-    }
-
-    /**
-     * Sets the interface table name.
-     * 
-     * @param interfaceTableName the new interface table name
-     */
-    public void setInterfaceTableName(String interfaceTableName) {
-        this.interfaceTableName = interfaceTableName;
     }
 
     /**

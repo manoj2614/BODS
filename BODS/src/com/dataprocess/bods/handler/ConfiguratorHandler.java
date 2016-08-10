@@ -14,7 +14,6 @@ import com.dataprocess.bods.vo.ConfiguratorColumnDefinitionVO;
 import com.dataprocess.bods.vo.ConfiguratorInterfaceColumnVO;
 import com.dataprocess.bods.vo.ConfiguratorVO;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ConfiguratorHandler.
  */
@@ -53,19 +52,22 @@ public final class ConfiguratorHandler {
      * @return the interface table column info
      * @throws BODSException the bODS exception
      */
-    public ConfiguratorVO getInterfaceTableColumnInfo(ConfiguratorVO configuratorVO) throws BODSException {
+    public JSONObject getInterfaceTableColumnInfo(ConfiguratorVO configuratorVO) throws BODSException {
+        JSONObject valueObject = null;
         Configurator configurator = null;
         List<ConfiguratorInterfaceColumnVO> configuratorInterfaceColumnVOList = null;
         try {
+            valueObject = new JSONObject();
             configurator = new Configurator();
             configuratorInterfaceColumnVOList = configurator.getInterfaceTableColumnList(configuratorVO);
-            configuratorVO.setConfiguratorInterfaceColumnVOList(configuratorInterfaceColumnVOList);
+            valueObject.put("configuratorTableColVOList", configuratorInterfaceColumnVOList);
+            valueObject.put("configuratorAttributeColVOList", configuratorVO.getConfiguratorColumnDefinitionVOList());
         } catch (BODSException bodsException) {
             throw bodsException;
         } catch (Exception exception) {
             throw new BODSException("ConfiguratorHandler", "getSourceConfiguratorColumn", exception.getMessage());
         }
-        return configuratorVO;
+        return valueObject;
     }
 
     /**

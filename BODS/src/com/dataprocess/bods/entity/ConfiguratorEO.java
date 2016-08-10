@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,7 +16,6 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Formula;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class ConfiguratorEO.
  */
@@ -69,7 +68,7 @@ public class ConfiguratorEO {
 
     /** The configurator binaries eo. */
     @JoinColumn(name = "CONFIGURATOR_ID")
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     private ConfiguratorBinariesEO configuratorBinariesEO;
 

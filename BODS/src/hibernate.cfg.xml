@@ -14,10 +14,8 @@
         <property name="hibernate.current_session_context_class">thread</property>
     	<mapping class="com.dataprocess.bods.entity.QueryDefinitionEO"/>
    		<mapping class="com.dataprocess.bods.entity.QueryDefinitionLineEO"/>
-   		<mapping class="com.dataprocess.bods.entity.ConfiguratorEO"/>
-   		<mapping class="com.dataprocess.bods.entity.ConfiguratorColumnDefinitionEO"/>
    		<mapping class="com.dataprocess.bods.entity.ConnectionConfigurationEO"/>
-   		
-   		
+   		<mapping class="com.dataprocess.bods.entity.ConfiguratorEO"/>
+   		<mapping class="com.dataprocess.bods.entity.ConfiguratorBinariesEO"/>
     </session-factory>  
 </hibernate-configuration>  

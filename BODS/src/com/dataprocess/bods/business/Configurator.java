@@ -22,7 +22,6 @@ import com.dataprocess.bods.vo.ConfiguratorVO;
 import com.dataprocess.bods.vo.QueryDefinitionLineVO;
 import com.dataprocess.bods.vo.QueryDefinitionVO;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class Configurator.
  */
@@ -97,13 +96,14 @@ public final class Configurator {
      */
     public List<ConfiguratorInterfaceColumnVO> getInterfaceTableColumnList(ConfiguratorVO configuratorVO)
         throws BODSException {
+        String tableName = "";
         ConfiguratorDAO configuratorDAO = null;
         List<ConfiguratorInterfaceColumnVO> configuratorInterfaceColumnVOList = null;
         try {
             configuratorDAO = new ConfiguratorDAO();
+            tableName = configuratorVO.getConfiguratorInterfaceColumnVO().getTableName();
             configuratorInterfaceColumnVOList =
-                configuratorDAO.getInterfaceTableColumnList(configuratorVO.getConfiguratorConnectionId(),
-                    configuratorVO.getInterfaceTableName());
+                configuratorDAO.getInterfaceTableColumnList(configuratorVO.getConfiguratorConnectionId(), tableName);
         } catch (BODSException bodsException) {
             throw bodsException;
         } catch (Exception exception) {

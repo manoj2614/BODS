@@ -11,17 +11,11 @@ public final class ConfiguratorInterfaceColumnVO {
     /** The column name. */
     private String columnName;
 
-    /** The display name. */
-    private String displayName;
-
     /** The attribute name. */
     private String attributeName;
 
-    /** The data type. */
-    private String dataType;
-
-    /** The data length. */
-    private int dataLength;
+    /** The mapped column flag. */
+    private String mappedColumnFlag;
 
     /**
      * Gets the table name.
@@ -60,24 +54,6 @@ public final class ConfiguratorInterfaceColumnVO {
     }
 
     /**
-     * Gets the display name.
-     *
-     * @return the display name
-     */
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    /**
-     * Sets the display name.
-     *
-     * @param displayName the new display name
-     */
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    /**
      * Gets the attribute name.
      *
      * @return the attribute name
@@ -96,39 +72,21 @@ public final class ConfiguratorInterfaceColumnVO {
     }
 
     /**
-     * Gets the data type.
+     * Gets the mapped column flag.
      *
-     * @return the data type
+     * @return the mapped column flag
      */
-    public String getDataType() {
-        return dataType;
+    public String getMappedColumnFlag() {
+        return mappedColumnFlag;
     }
 
     /**
-     * Sets the data type.
+     * Sets the mapped column flag.
      *
-     * @param dataType the new data type
+     * @param mappedColumnFlag the new mapped column flag
      */
-    public void setDataType(String dataType) {
-        this.dataType = dataType;
-    }
-
-    /**
-     * Gets the data length.
-     *
-     * @return the data length
-     */
-    public int getDataLength() {
-        return dataLength;
-    }
-
-    /**
-     * Sets the data length.
-     *
-     * @param dataLength the new data length
-     */
-    public void setDataLength(int dataLength) {
-        this.dataLength = dataLength;
+    public void setMappedColumnFlag(String mappedColumnFlag) {
+        this.mappedColumnFlag = mappedColumnFlag;
     }
 
 }
