@@ -31,8 +31,6 @@
 	}
 	
 	function editColumn(tbBodyChildrenIndex) {
-		alert('edit' + tbBodyChildrenIndex)
-		alert('attributeNameTdId' + $('#attributeNameTdId'+tbBodyChildrenIndex).val());
 		var editColumnName = $('#columnNameTdId'+tbBodyChildrenIndex).val();
 		var editAttributeName = $('#attributeNameTdId'+tbBodyChildrenIndex).val();
 		
@@ -89,7 +87,6 @@
 		     dataType: "text",
 		     url: "/bods/GetTargetTableColumnMapping.etl?tableName="+ $('#tableNameId').val(),
 		     success: function(data) {
-		    	 alert(data);
 		    	 var jsonparse = $.parseJSON(data);
 		    	 columnNameArr = jsonparse.configuratorTableColVOList;
 		    	 attributeNameArr = jsonparse.configuratorAttributeColVOList;
